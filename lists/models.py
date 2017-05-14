@@ -5,7 +5,7 @@ from django.utils import timezone
 
 
 class TodoList(models.Model):
-    title = models.CharField(max_length=128, default='untitled')
+    title = models.CharField(max_length=128, default='sem título')
     created_at = models.DateTimeField(auto_now=True)
     creator = models.ForeignKey(User, null=True, related_name='todolists')
 

@@ -13,11 +13,11 @@ def form_kwargs(widget, label='', max_length=64):
 class LoginForm(forms.Form):
 
     username = forms.CharField(
-        **form_kwargs(widget=forms.TextInput(attrs=widget_attrs('Username')))
+        **form_kwargs(widget=forms.TextInput(attrs=widget_attrs('Usuário')))
     )
     password = forms.CharField(
         **form_kwargs(
-            widget=forms.PasswordInput(attrs=widget_attrs('Password'))
+            widget=forms.PasswordInput(attrs=widget_attrs('Senha'))
         )
     )
 
@@ -31,7 +31,7 @@ class LoginForm(forms.Form):
         user = User.objects.filter(username=username).first()
 
         if not user or not user.check_password(password):
-            raise forms.ValidationError('Incorrect username and/or password.')
+            raise forms.ValidationError('Usuário ou senha incorretos.')
 
         return self.cleaned_data
 
@@ -39,7 +39,7 @@ class LoginForm(forms.Form):
 class RegistrationForm(forms.Form):
 
     username = forms.CharField(
-        **form_kwargs(widget=forms.TextInput(attrs=widget_attrs('Username')))
+        **form_kwargs(widget=forms.TextInput(attrs=widget_attrs('Usuário')))
     )
 
     email = forms.EmailField(
@@ -48,14 +48,14 @@ class RegistrationForm(forms.Form):
 
     password = forms.CharField(
         **form_kwargs(
-            widget=forms.PasswordInput(attrs=widget_attrs('Password'))
+            widget=forms.PasswordInput(attrs=widget_attrs('Senha'))
         )
     )
 
     password_confirmation = forms.CharField(
         **form_kwargs(
             widget=forms.PasswordInput(
-                attrs=widget_attrs('Password confirmation')
+                attrs=widget_attrs('Confirmar Senha')
             )
         )
     )
@@ -65,6 +65,6 @@ class RegistrationForm(forms.Form):
         password_confirmation = self.cleaned_data.get('password_confirmation')
 
         if password and password != password_confirmation:
-            raise forms.ValidationError("Passwords don't match.")
+            raise forms.ValidationError("As senhas são diferentes.")
 
         return self.cleaned_data

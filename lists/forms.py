@@ -12,7 +12,7 @@ def form_kwargs(widget, label='', max_length=128):
 class TodoForm(forms.Form):
     description = forms.CharField(
         **form_kwargs(
-            widget=forms.TextInput(attrs=widget_attrs('Enter your todo'))
+            widget=forms.TextInput(attrs=widget_attrs('Entre seu afazer'))
         )
     )
 
@@ -21,7 +21,7 @@ class TodoListForm(forms.Form):
     title = forms.CharField(
         **form_kwargs(
             widget=forms.TextInput(
-                attrs=widget_attrs('Enter a title to start a new todolist')
+                attrs=widget_attrs('Entre um título para começar um novo afazer')
             )
         )
     )
