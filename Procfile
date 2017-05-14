@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath todolist todolist.wsgi:application
+web: gunicorn todolist.wsgi:application
